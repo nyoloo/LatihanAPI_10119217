@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 // Nama     : Tiyo Haryo Subaktiono
@@ -32,12 +35,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         Post post = postList.get(position);
         holder.title.setText("Judul = " + post.getTitle());
-        holder.thumb.setText("Thumb = " + post.getThumb());
         holder.author.setText("Author = " + post.getAuthor());
         holder.tag.setText("Tag = " + post.getTag());
         holder.time.setText("Time = " + post.getTime());
         holder.desc.setText("Desc = " + post.getDesc());
-        holder.key.setText("Key = " + post.getKey());
+
+        String url = this.postList.get(position).getThumb();
+        Glide.with(context).load(url).fitCenter().centerCrop().into(holder.thumb);
 
     }
 
@@ -47,18 +51,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public class PostViewHolder extends RecyclerView.ViewHolder{
-        TextView title, thumb, author, tag, time, desc, key;
-        public PostViewHolder(@NonNull View itemView) {
+        TextView title, author, tag, time, desc;
+        ImageView thumb;
+        public PostViewHolder(@NonNull View itemView)  {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
-            thumb = itemView.findViewById(R.id.thumb);
             author = itemView.findViewById(R.id.author);
             tag = itemView.findViewById(R.id.tag);
             time = itemView.findViewById(R.id.time);
             desc = itemView.findViewById(R.id.desc);
-            key = itemView.findViewById(R.id.key);
-
+            thumb = itemView.findViewById(R.id.thumb);
         }
     }
 }

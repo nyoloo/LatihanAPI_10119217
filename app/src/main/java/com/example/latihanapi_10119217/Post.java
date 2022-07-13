@@ -28,9 +28,5 @@ public class Post {
     public String getDesc() {
         return desc;
     }
-
-    public String getKey() {
-        return key;
-    }
 }
 

@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 // Kelas    : IF 6
 // Tanggal pengerjaan : 8 Juli 2022
 public interface JSONPlaceholder {
-    @GET("/api/games/pc?page=2")
+    @GET("/api/tech?page=1")
     Call<List<Post>> getPost();
 }
